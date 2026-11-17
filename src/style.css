@@ -1,0 +1,372 @@
+:root {
+  --bg: #e6f1fe;
+  --panel-from: #d9e9fc;
+  --panel-to: #c4dcf8;
+  --ink: #000;
+  --text: #0a0a0a;
+  --muted: #4b4658;
+  --blue: #6fb4f8;
+  --blue-strong: #1668e3;
+  --shadow: 3px 3px 0 var(--ink);
+  --shadow-lg: 9px 9px 0 var(--ink);
+  --page-gutter: clamp(48px, 16vw, 288px);
+
+  --sans: Inter, system-ui, sans-serif;
+
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: var(--bg);
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue-strong);
+  outline-offset: 3px;
+}
+
+.page-container {
+  width: min(calc(100% - var(--page-gutter)), 940px);
+  margin-inline: auto;
+}
+
+/* Navbar */
+
+#navbar-wrap {
+  border-bottom: 3px solid var(--ink);
+}
+
+#navbar {
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  color: var(--text);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  text-decoration: none;
+}
+
+.brand span {
+  color: var(--blue-strong);
+}
+
+.github-link {
+  display: flex;
+  color: var(--text);
+  transition: transform 0.15s;
+}
+
+.github-link:hover {
+  transform: translate(-2px, -2px);
+}
+
+.github-link svg {
+  width: 23px;
+  height: 23px;
+  fill: currentColor;
+}
+
+/* Main */
+
+#main {
+  position: relative;
+  flex: 1 0 auto;
+  padding-top: 52px;
+  padding-bottom: 56px; /* clears the 9px shadow and gives breathing room */
+}
+
+#hero {
+  position: relative;
+  margin-bottom: 42px;
+  text-align: center;
+}
+
+#hero h1 {
+  max-width: 11ch;
+  margin: 0 auto 22px;
+  font-size: clamp(38px, 6.4vw, 76px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+#hero p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(14px, 1.3vw, 17px);
+}
+
+/* Workspace */
+
+#workspace {
+  position: relative;
+  padding: 28px;
+  background: linear-gradient(180deg, var(--panel-from), var(--panel-to));
+  border: 3px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Repository input */
+
+#repository-form {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+#repository-form input {
+  flex: 1;
+  min-width: 0;
+  height: 50px;
+  padding: 0 18px;
+  color: var(--text);
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  outline: none;
+  font-size: 16px;
+}
+
+#repository-form input::placeholder {
+  color: #5d5868;
+}
+
+#repository-form input:focus-visible {
+  outline: 3px solid var(--blue-strong);
+  outline-offset: 2px;
+}
+
+#repository-form button {
+  height: 50px;
+  padding: 0 26px;
+  color: var(--text);
+  background: var(--blue);
+  border: 3px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s;
+}
+
+#repository-form button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+#repository-form button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+#repository-form button span {
+  margin-left: 6px;
+}
+
+/* Artefacts */
+#artifacts h2 {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+#tool-count {
+  color: var(--muted);
+  font-size: 11px;
+  opacity: 0.65;
+}
+
+.artifact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.artifact-card {
+  min-width: 0;
+  min-height: 66px;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  color: var(--text);
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+
+  background: var(--blue);
+  border: 3px solid var(--ink);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  cursor: pointer;
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s;
+}
+
+.artifact-card h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.tool-credit {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+  opacity: 0.8;
+}
+
+.artifact-card:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.artifact-card:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+.artifact-card:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+#tool-hint {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Footer */
+
+#footer {
+  flex: 0 0 auto;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 3px solid var(--ink);
+}
+
+#footer p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1;
+}
+
+#footer a {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+#footer a:hover {
+  color: var(--blue-strong);
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  :root {
+    --page-gutter: 48px;
+  }
+
+  .artifact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --page-gutter: 32px;
+    --shadow-lg: 6px 6px 0 var(--ink);
+  }
+
+  #main {
+    padding-top: 34px;
+  }
+
+  #hero {
+    margin-bottom: 36px;
+  }
+
+  #workspace {
+    padding: 14px;
+  }
+
+  #repository-form {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #repository-form input {
+    font-size: 16px;
+  }
+
+  .artifact-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .artifact-card {
+    min-height: 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
