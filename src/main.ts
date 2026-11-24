@@ -48,11 +48,28 @@ const tools = [
   },
 ];
 
+const sparklePath =
+  "M12 0C12.8 7 17 11.2 24 12C17 12.8 12.8 17 12 24C11.2 17 7 12.8 0 12C7 11.2 11.2 7 12 0Z";
+
+const sparkle = (className: string) => `
+  <svg class="sparkle ${className}" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="${sparklePath}" vector-effect="non-scaling-stroke" />
+  </svg>
+`;
+
+const sparkleCluster = (side: "left" | "right", color: string) => `
+  <div class="sparkles sparkles-${side}" style="--sparkle-color: ${color}" aria-hidden="true">
+    ${sparkle("sparkle-big")}
+    ${sparkle("sparkle-small sparkle-a")}
+    ${sparkle("sparkle-small sparkle-b")}
+  </div>
+`;
+
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div id="navbar-wrap">
     <nav id="navbar" class="page-container">
       <a href="/" class="brand">
-        Git<span>Governance</span>
+        Git<span style="color:#6fb4f8">Governance</span>
       </a>
 
       <a
@@ -72,8 +89,10 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <main id="main" class="page-container">
 
     <section id="hero">
+      ${sparkleCluster("left", "#1e3a8a")}
+      ${sparkleCluster("right", "#4db8ff")}
       <h1>Understand any codebase</h1>
-      <p>Paste a GitHub URL and jump straight into diagrams, docs, editors and more</p>
+      <p>Paste a GitHub URL for instant diagrams, docs, editors and more</p>
     </section>
 
     <section id="workspace">
