@@ -10,7 +10,7 @@ Paste any GitHub URL and jump straight into diagrams, docs, editors and more.
 
 Visit: [GitGovernance](https://gitgovernance.vercel.app)
 
-![](/public/image.tiff)
+![Project preview](/assets/preview.png)
 
 ## How It Works
 
